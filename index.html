@@ -1,0 +1,21 @@
+<script src = "https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"> </script> 
+<button id = "test"> getAuthCode 网页2015071500171298</button>
+<button id = "test2"> getAuthCode 小程序2017050307091553</button>
+<script>
+ document.querySelector('#test').addEventListener('click',function(){
+    ap.getAuthCode ({
+      appId :  '2015071500171298' ,
+      scopes : ['auth_user'],
+   },function(res){
+      ap.alert (JSON.stringify(res));
+   });
+});
+document.querySelector('#test2').addEventListener('click',function(){
+    ap.getAuthCode ({
+      appId :  '2017050307091553' ,
+      scopes : ['auth_user'],
+   },function(res){
+      ap.alert (JSON.stringify(res));
+   });
+});
+</script>
