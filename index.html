@@ -1,6 +1,7 @@
 <script src = "https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"> </script> 
 <button id = "test"> getAuthCode 网页2015071500171298</button>
 <button id = "test2"> getAuthCode 小程序2017050307091553</button>
+<button id="J_btn" class="btn btn-default">支付</button>
 <script>
  document.querySelector('#test').addEventListener('click',function(){
     ap.getAuthCode ({
@@ -18,10 +19,7 @@ document.querySelector('#test2').addEventListener('click',function(){
       ap.alert (JSON.stringify(res));
    });
 });
-</script>
-<button id="J_btn" class="btn btn-default">支付</button>
-<script>
-  var btn = document.querySelector('#J_btn');
+var btn = document.querySelector('#J_btn');
   btn.addEventListener('click', function(){
     ap.tradePay({
       tradeNO: '2022101822001434211416154936'
@@ -30,3 +28,4 @@ document.querySelector('#test2').addEventListener('click',function(){
     });
   });
 </script>
+
