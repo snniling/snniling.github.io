@@ -19,3 +19,14 @@ document.querySelector('#test2').addEventListener('click',function(){
    });
 });
 </script>
+<button id="J_btn" class="btn btn-default">支付</button>
+<script>
+  var btn = document.querySelector('#J_btn');
+  btn.addEventListener('click', function(){
+    ap.tradePay({
+      tradeNO: '2022101822001434211416154936'
+    }, function(res){
+      ap.alert(res.resultCode);
+    });
+  });
+</script>
