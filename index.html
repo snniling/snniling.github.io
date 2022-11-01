@@ -1,3 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>webview与小程序通信</title>
+</head>
+
+<body>
+  <button onclick="send()">发送</button>
+  <button onclick="isminiapp()">判断是否在小程序内</button>
+  <button onclick="onmessage()">开始监听小程序发送的消息</button>
+  <button onclick="getminiappid()">我要调用小程序获取appid的api</button>
+  <!-- h5 log 工具方便在小程序内查看h5的log-->
+  <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+  <script>
+    eruda.init();
+  </script>
+  <!--引入https://appx/web-view.min.js， 如该 H5 页面需要同时在非支付宝客户端内使用，为避免该请求404，可参考以下写法 -->
+  <script>
+    if (navigator.userAgent.indexOf('AlipayClient') > -1) {
+      document.writeln('<script src="https://appx/web-view.min.js"' + '>' + '<' + '/' + 'script>');
+    }
+  </script>
+  <script>
+    //发送消息
+    function send() {
+      my.postMessage({
+        name: "h5发送测试web-view"
+      });
+    }
+    //监听小程序发给h5页面的消息
+    function onmessage() {
+      my.onMessage = function (e) {
+        console.log(e);
+      }
+    }
+    //判断是否在小程序内
+    function isminiapp() {
+      my.getEnv(function (res) {
+        console.log(res.miniprogram) // true  
+      });
+    }
+    //h5内通过通信获取appid（先给小程序发送消息，表示h5内需要appid）
+    function getminiappid() {
+      my.postMessage({
+        name: "getappid"
+      });
+    }
+  </script>
+
 <script src = "https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"> </script> 
 <button id = "test"> getAuthCode 网页2015071500171298</button>
 <button id = "test2"> getAuthCode 小程序2017050307091553</button>
@@ -29,4 +80,6 @@ var btn = document.querySelector('#J_btn');
     });
   });
 </script>
-
+</body>
+  
+</html>
