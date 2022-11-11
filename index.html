@@ -5,23 +5,54 @@
   <meta charset="UTF-8">
   <title>webview与小程序通信</title>
 </head>
+<link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet"> 
+<script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
 
 <body>
-<button id = "testsch"> scheme链接</button>
+<div class="row">
+    <div class="col">
+        <button id="testsch"> scheme链接</button>
+    </div>
+</div>
 
-<button id = "test"> getAuthCode 网页2015071500171298</button>
-<button id = "test2"> getAuthCode 小程序2017050307091553</button>
-<button id="J_btn" class="btn btn-default">支付</button>
-<a href="58bdc716879c255c94b7c1bf033112eb.html">测试</a>
+<div class="row">
+    <div class="col">
+        <button id="test"> getAuthCode 网页2015071500171298</button>
+        <button id="test2"> getAuthCode 小程序2017050307091553</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <button id="J_btn" class="btn btn-default">支付</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col"><a href="58bdc716879c255c94b7c1bf033112eb.html">测试</a></div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <button onclick="send()">发送</button>
+    </div>
+
+    <div class="col">
+        <button onclick="isminiapp()">判断是否在小程序内</button>
+    </div>
+
+    <div class="col">
+        <button onclick="onmessage()">开始监听小程序发送的消息</button>
+    </div>
 
 
+   <div class="col">
+        <button onclick="getminiappid()">我要调用小程序获取appid的api</button>
+    </div>
 
-
-  <button onclick="send()">发送</button>
-  <button onclick="isminiapp()">判断是否在小程序内</button>
-  <button onclick="onmessage()">开始监听小程序发送的消息</button>
-  <button onclick="getminiappid()">我要调用小程序获取appid的api</button>
-  <!-- h5 log 工具方便在小程序内查看h5的log-->
+</div> 
+ 
+<!-- h5 log 工具方便在小程序内查看h5的log-->
   <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
   <script>
     eruda.init();
