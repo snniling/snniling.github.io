@@ -7,6 +7,16 @@
 </head>
 
 <body>
+<button id = "testsch"> scheme链接</button>
+
+<button id = "test"> getAuthCode 网页2015071500171298</button>
+<button id = "test2"> getAuthCode 小程序2017050307091553</button>
+<button id="J_btn" class="btn btn-default">支付</button>
+<a href="58bdc716879c255c94b7c1bf033112eb.html">测试</a>
+
+
+
+
   <button onclick="send()">发送</button>
   <button onclick="isminiapp()">判断是否在小程序内</button>
   <button onclick="onmessage()">开始监听小程序发送的消息</button>
@@ -50,13 +60,13 @@
   </script>
 
 <script src = "https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"> </script> 
-<button id = "test"> getAuthCode 网页2015071500171298</button>
-<button id = "test2"> getAuthCode 小程序2017050307091553</button>
-<button id="J_btn" class="btn btn-default">支付</button>
-<a href="58bdc716879c255c94b7c1bf033112eb.html">测试</a>
 <script>
- document.querySelector('#test').addEventListener('click',function(){
+ document.querySelector('#testsch').addEventListener('click',function(){
     window.location.href="alipays://platformapi/startapp?appId=20000067&appClearTop=false&startMultApp=YES&url=https%3A%2F%2Frender.alipay.com%2Fp%2Fyuyan%2F180020010001197705%2Fsubscribe-services.html&showOptionMenu=NO&canPullDown=NO"
+})
+document.querySelector('#test').addEventListener('click',function(){
+
+
 ap.getAuthCode ({
       appId :  '2015071500171298' ,
       scopes : ['auth_user'],
