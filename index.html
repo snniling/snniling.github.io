@@ -103,6 +103,16 @@
 
 <script src = "https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"> </script> 
 <script>
+let obj = {}; 
+if(window.location.href.indexOf("?")>0){ 
+  let arr = window.location.href.split("?")[1].split("&");
+    for (let i of arr) { 
+      obj[i.split("=")[0]] = i.split("=")[1]; 
+    }
+    console.log(obj); 
+}
+
+
  document.querySelector('#testsch').addEventListener('click',function(){
     window.location.href="alipays://platformapi/startapp?appId=20000067&appClearTop=false&startMultApp=YES&url=https%3A%2F%2Frender.alipay.com%2Fp%2Fyuyan%2F180020010001197705%2Fsubscribe-services.html&showOptionMenu=NO&canPullDown=NO"
 })
@@ -127,7 +137,7 @@ document.querySelector('#test2').addEventListener('click',function(){
 var btn = document.querySelector('#J_btn');
   btn.addEventListener('click', function(){
     ap.tradePay({
-      tradeNO: '2022101822001431711406468925'
+      tradeNO: obj.trade_no
     }, function(res){
       ap.alert(res.resultCode);
     });
@@ -146,7 +156,7 @@ function ready(callback) {
 ready(function(){
   document.querySelector('.tradeno').addEventListener('click', function() {
     AlipayJSBridge.call("tradePay", {
-      tradeNO: "2022111122001430711446505595"
+      tradeNO: obj.trade_no
     }, function(result) {
       alert(JSON.stringify(result));
     });
