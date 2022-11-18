@@ -28,6 +28,8 @@
     <div class="col">
         <button id="test" class="btn btn-primary"> getAuthCode 网页2015071500171298</button>
         <button id="test2" class="btn btn-primary"> getAuthCode 小程序2017050307091553</button>
+        <button id="test3" class="btn btn-primary"> getAuthCode 根据链接appid</button>
+
     </div>
 </div>
 
@@ -126,6 +128,18 @@ ap.getAuthCode ({
       ap.alert (JSON.stringify(res));
    });
 });
+
+document.querySelector('#test3').addEventListener('click',function(){
+
+
+ap.getAuthCode ({
+      appId :  obj.appid ,
+      scopes : ['auth_user'],
+   },function(res){
+      ap.alert (JSON.stringify(res));
+   });
+});
+
 document.querySelector('#test2').addEventListener('click',function(){
     ap.getAuthCode ({
       appId :  '2017050307091553' ,
@@ -137,7 +151,7 @@ document.querySelector('#test2').addEventListener('click',function(){
 var btn = document.querySelector('#J_btn');
   btn.addEventListener('click', function(){
     ap.tradePay({
-      tradeNO: obj.trade_no
+      tradeNO: obj.tradeno
     }, function(res){
       ap.alert(res.resultCode);
     });
@@ -156,7 +170,7 @@ function ready(callback) {
 ready(function(){
   document.querySelector('.tradeno').addEventListener('click', function() {
     AlipayJSBridge.call("tradePay", {
-      tradeNO: obj.trade_no
+      tradeNO: obj.tradeno
     }, function(result) {
       alert(JSON.stringify(result));
     });
