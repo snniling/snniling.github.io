@@ -248,138 +248,140 @@
 
 
 
-// 销售额统计自动跳转
-(function () {
-    var option = {
-        xAxis: {
-            type: 'category',
-            data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
-            axisTick: {
-              show: false // 去除刻度线
-            },
-            axisLabel: {
-              color: '#4c9bfd' // 文本颜色
-            },
-            axisLine: {
-              show: false // 去除轴线
-            },
-            boundaryGap: false  // 去除轴内间距
-          },
-        yAxis: {
-            type: 'value',
-            axisTick: {
-              show: false  // 去除刻度
-            },
-            axisLabel: {
-              color: '#4c9bfd' // 文字颜色
-            },
-            splitLine: {
-              lineStyle: {
-                color: '#012f4a' // 分割线颜色
-              }
-            }
-          },
-        series: [{
-            name:'预期销售额',
-            data: [24, 40, 101, 134, 90, 230, 210, 230, 120, 230, 210, 120],
-            type: 'line',
-            smooth: true,
-            itemStyle: {
-              color: '#00f2f1'  // 线颜色
-            }
-          },{
-            name:'实际销售额',
-            data: [40, 64, 191, 324, 290, 330, 310, 213, 180, 200, 180, 79],
-            type: 'line',
-            smooth: true,
-            itemStyle: {
-              color: '#ed3f35'  // 线颜色
-            }
-          }],
-            // 设置网格样式
-        grid: {
-            show: true,// 显示边框
-            top: '20%',
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            borderColor: '#012f4a',// 边框颜色
-            containLabel: true // 包含刻度文字在内
-        },
-        legend: {
-            textStyle: {
-              color: '#4c9bfd' // 图例文字颜色
-               //  fontSize
-            },
-            right: '10%' // 距离右边10%
-          },
-    };
-    // $(jQ对象)==>DOM对象
-    var myChart = echarts.init(document.querySelector('.line'))
-    myChart.setOption(option);
-
-    // 数据
-    var data = {
-        year: [
-          [24, 40, 101, 134, 90, 230, 210, 230, 120, 230, 210, 120],
-          [40, 64, 191, 324, 290, 330, 310, 213, 180, 200, 180, 79]
-        ],
-        quarter: [
-          [23, 75, 12, 97, 21, 67, 98, 21, 43, 64, 76, 38],
-          [43, 31, 65, 23, 78, 21, 82, 64, 43, 60, 19, 34]
-        ],
-        month: [
-          [34, 87, 32, 76, 98, 12, 32, 87, 39, 36, 29, 36],
-          [56, 43, 98, 21, 56, 87, 43, 12, 43, 54, 12, 98]
-        ],
-        week: [
-          [43, 73, 62, 54, 91, 54, 84, 43, 86, 43, 54, 53],
-          [32, 54, 34, 87, 32, 45, 62, 68, 93, 54, 54, 24]
-        ]
-      }
-    // 点击的时候获取自定义属性，通过这个属性，到data里面取出我们要用的数据
-    // 之后吧这个数据，是一个数组，第一个数组给series第一个数据，同理第二个给第二个
-    $('.sales').on('click','.caption a',function () {
-        $(this).addClass('active').siblings('a').removeClass('active');
-        // 获取自定义属性
-        var arr = data[$(this).attr('data-type')];
-        // console.log(arr);
-        // 设置修改option配置
-        option.series[0].data = arr[0];
-        option.series[1].data = arr[1];
-        //修改完成之后，在此设置 
-        myChart.setOption(option);
-    });
-    // // 销售额统计自动跳转
-    // // 一样
-    // var index = 0;
-    // // 定时器
-    // var dsq = window.setInterval(function () {
-    //     index++;
-    //     if (index > 3) {
-    //         index = 0;
-    //     }
-    //     $('.sales .caption a').eq(index).click();
-    // },1000);
-
-    // 鼠标进入停止
-    // mouseover == mouseenter
-    // mouseout == mouseleave
-    $('.line').mouseenter(function () {
-        // console.log('哇哈哈');
-        window.clearInterval(dsq);
-    });
-    // 鼠标离开启动
-    $('.line').mouseleave(function () {
-        // dsq = window.setInterval(function () {
-        //     index++;
-        //     if (index > 3) {
-        //         index = 0;
-        //     }
-        //     $('.sales .caption a').eq(index).click();
-        // },1000);
-    });
-})();
+// // 销售额统计
+// (function () {
+//     var option = {
+//         xAxis: {
+//             type: 'category',
+//             data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+//             axisTick: {
+//               show: false // 去除刻度线
+//             },
+//             axisLabel: {
+//               color: '#4c9bfd' // 文本颜色
+//             },
+//             axisLine: {
+//               show: false // 去除轴线
+//             },
+//             boundaryGap: false  // 去除轴内间距
+//           },
+//         yAxis: {
+//             type: 'value',
+//             axisTick: {
+//               show: false  // 去除刻度
+//             },
+//             axisLabel: {
+//               color: '#4c9bfd' // 文字颜色
+//             },
+//             splitLine: {
+//               lineStyle: {
+//                 color: '#012f4a' // 分割线颜色
+//               }
+//             }
+//           },
+//         series: [{
+//             name:'预期销售额',
+//             data: [24, 40, 101, 134, 90, 230, 210, 230, 120, 230, 210, 120],
+//             type: 'line',
+//             smooth: true,
+//             itemStyle: {
+//               color: '#00f2f1'  // 线颜色
+//             }
+//           },{
+//             name:'实际销售额',
+//             data: [40, 64, 191, 324, 290, 330, 310, 213, 180, 200, 180, 79],
+//             type: 'line',
+//             smooth: true,
+//             itemStyle: {
+//               color: '#ed3f35'  // 线颜色
+//             }
+//           }],
+//             // 设置网格样式
+//         grid: {
+//             show: true,// 显示边框
+//             top: '20%',
+//             left: '3%',
+//             right: '4%',
+//             bottom: '3%',
+//             borderColor: '#012f4a',// 边框颜色
+//             containLabel: true // 包含刻度文字在内
+//         },
+//         legend: {
+//             textStyle: {
+//               color: '#4c9bfd' // 图例文字颜色
+//                //  fontSize
+//             },
+//             right: '10%' // 距离右边10%
+//           },
+//     };
+//     // $(jQ对象)==>DOM对象
+//     var myChart = echarts.init(document.querySelector('.line'))
+//     myChart.setOption(option);
+//
+//     // 数据
+//     var data = {
+//         year: [
+//           [24, 40, 101, 134, 90, 230, 210, 230, 120, 230, 210, 120],
+//           [40, 64, 191, 324, 290, 330, 310, 213, 180, 200, 180, 79]
+//         ],
+//         // quarter: [
+//         //   [23, 75, 12, 97, 21, 67, 98, 21, 43, 64, 76, 38],
+//         //   [43, 31, 65, 23, 78, 21, 82, 64, 43, 60, 19, 34]
+//         // ],
+//         // month: [
+//         //   [34, 87, 32, 76, 98, 12, 32, 87, 39, 36, 29, 36],
+//         //   [56, 43, 98, 21, 56, 87, 43, 12, 43, 54, 12, 98]
+//         // ],
+//         // week: [
+//         //   [43, 73, 62, 54, 91, 54, 84, 43, 86, 43, 54, 53],
+//         //   [32, 54, 34, 87, 32, 45, 62, 68, 93, 54, 54, 24]
+//         // ]
+//       }
+//
+//     // // 点击的时候获取自定义属性，通过这个属性，到data里面取出我们要用的数据
+//     // // 之后吧这个数据，是一个数组，第一个数组给series第一个数据，同理第二个给第二个
+//     // $('.sales').on('click','.caption a',function () {
+//     //     $(this).addClass('active').siblings('a').removeClass('active');
+//     //     // 获取自定义属性
+//     //     var arr = data[$(this).attr('data-type')];
+//     //     // console.log(arr);
+//     //     // 设置修改option配置
+//     //     option.series[0].data = arr[0];
+//     //     option.series[1].data = arr[1];
+//     //     //修改完成之后，在此设置
+//     //     myChart.setOption(option);
+//     // });
+//
+//     // // 销售额统计自动跳转
+//     // // 一样
+//     // var index = 0;
+//     // // 定时器
+//     // var dsq = window.setInterval(function () {
+//     //     index++;
+//     //     if (index > 3) {
+//     //         index = 0;
+//     //     }
+//     //     $('.sales .caption a').eq(index).click();
+//     // },1000);
+//     //
+//     // // 鼠标进入停止
+//     // // mouseover == mouseenter
+//     // // mouseout == mouseleave
+//     // $('.line').mouseenter(function () {
+//     //     // console.log('哇哈哈');
+//     //     window.clearInterval(dsq);
+//     // });
+//     // // 鼠标离开启动
+//     // $('.line').mouseleave(function () {
+//     //     dsq = window.setInterval(function () {
+//     //         index++;
+//     //         if (index > 3) {
+//     //             index = 0;
+//     //         }
+//     //         $('.sales .caption a').eq(index).click();
+//     //     },1000);
+//     // });
+// })();
 
 
 (function () {
