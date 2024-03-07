@@ -246,6 +246,9 @@
 
 })();
 
+
+
+// 销售额统计自动跳转
 (function () {
     var option = {
         xAxis: {
@@ -347,17 +350,17 @@
         //修改完成之后，在此设置 
         myChart.setOption(option);
     });
-
-    // 一样
-    var index = 0;
-    // 定时器
-    var dsq = window.setInterval(function () {
-        index++;
-        if (index > 3) {
-            index = 0;
-        }
-        $('.sales .caption a').eq(index).click();
-    },1000);
+    // // 销售额统计自动跳转
+    // // 一样
+    // var index = 0;
+    // // 定时器
+    // var dsq = window.setInterval(function () {
+    //     index++;
+    //     if (index > 3) {
+    //         index = 0;
+    //     }
+    //     $('.sales .caption a').eq(index).click();
+    // },1000);
 
     // 鼠标进入停止
     // mouseover == mouseenter
@@ -368,13 +371,13 @@
     });
     // 鼠标离开启动
     $('.line').mouseleave(function () {
-        dsq = window.setInterval(function () {
-            index++;
-            if (index > 3) {
-                index = 0;
-            }
-            $('.sales .caption a').eq(index).click();
-        },1000);
+        // dsq = window.setInterval(function () {
+        //     index++;
+        //     if (index > 3) {
+        //         index = 0;
+        //     }
+        //     $('.sales .caption a').eq(index).click();
+        // },1000);
     });
 })();
 
